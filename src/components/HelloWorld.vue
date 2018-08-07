@@ -10,7 +10,7 @@
           <span class="card-message2-number">{{death}}</span>
         </div>
         <div v-show="show3" class="card-message3">
-          <span class="card-message3-number">{{item[Object.keys(item)[0]].server==null?alive = 0:alive = item[Object.keys(item)[0]].server.length}}</span>
+          <span class="card-message3-number">{{computedFunction(item)}}</span>
         </div>
         <p class="card-p">{{item[Object.keys(item)[0]].describe}}</p>
         <div class="card-hr"></div>
@@ -64,6 +64,9 @@ export default {
     }
   },
   methods: {
+    computedFunction(item) {
+      return item[Object.keys(item)[0]].server==null?0:item[Object.keys(item)[0]].server.length;
+    },
     clickCancel() {
       this.newService = false;
     },
